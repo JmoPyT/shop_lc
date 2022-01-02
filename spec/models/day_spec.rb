@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Day, type: :model do
-    describe "#valid" do
+    describe '#valid' do
         context 'presence' do
             it 'should be valid' do
                 rspec_day = Day.create(label: 'Monday')
@@ -16,7 +16,7 @@ RSpec.describe Day, type: :model do
 
         context 'uniqueness' do
             it 'should be not valid' do
-                rspec_day1 = Day.create!(label: 'Monday')
+                Day.create!(label: 'Monday')
                 rspec_day2 = Day.create(label: 'Monday')
                 expect(rspec_day2).not_to be_valid
             end

@@ -30,7 +30,7 @@ RSpec.describe 'Shops', type: :request do
         context 'with valid params' do
             it 'creates a new Shop' do
                 expect do
-                    post shops_url, params: { shop: {name: 'rspec_shop1'} }
+                    post shops_url, params: { shop: { name: 'rspec_shop1' } }
                 end.to change(Shop, :count).by(1)
             end
         end
@@ -38,7 +38,7 @@ RSpec.describe 'Shops', type: :request do
         context 'with invalid params' do
             it 'not create a new Shop' do
                 expect do
-                    post shops_url, params: { shop: {name: ''} }
+                    post shops_url, params: { shop: { name: '' } }
                 end.to change(Shop, :count).by(0)
             end
         end
@@ -57,7 +57,7 @@ RSpec.describe 'Shops', type: :request do
         context 'with valid params' do
             it 'updates the requested shop' do
                 rspec_shop = Shop.create!(name: 'rspec_shop1')
-                put shop_url(rspec_shop), params: { shop: {name: 'rspec_shop1_updated'} }
+                put shop_url(rspec_shop), params: { shop: { name: 'rspec_shop1_updated' } }
                 expect(rspec_shop.reload.name).to eq('rspec_shop1_updated')
             end
         end
@@ -65,7 +65,7 @@ RSpec.describe 'Shops', type: :request do
         context 'with invalid params' do
             it 'not update the requested shop' do
                 rspec_shop = Shop.create!(name: 'rspec_shop1')
-                put shop_url(rspec_shop), params: { shop: {name: ''} }
+                put shop_url(rspec_shop), params: { shop: { name: '' } }
                 expect(rspec_shop.reload.name).to eq('rspec_shop1')
             end
         end

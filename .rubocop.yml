@@ -1,0 +1,8 @@
+Layout/IndentationWidth:
+    Width: 4
+
+Style/Documentation:
+    Enabled: false
+
+Style/FrozenStringLiteralComment:
+    Enabled: false
