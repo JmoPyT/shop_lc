@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_01_150609) do
+ActiveRecord::Schema.define(version: 2022_01_02_145712) do
+
+  create_table "days", force: :cascade do |t|
+    t.string "label"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "shops", force: :cascade do |t|
     t.string "name"
