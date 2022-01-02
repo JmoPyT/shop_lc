@@ -1,3 +1,33 @@
 <h2>Edit Shop</h2>
 
-<%= render "form", shop: @shop %>
+<%= form_with model: @shop do |shop_form| %>
+    <div>
+        <%= shop_form.label :name %>
+        <%= shop_form.text_field :name %>
+    </div>
+    <div>
+        <h3>Hours</h3>
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Closed</th>
+                <th>Hours</th>
+            </tr>
+            <%= shop_form.fields_for :shop_days do |shop_day_form| %>
+                <tr>
+                    <td><%= shop_day_form.collection_select :day_id, Day.all, :id, :label, include_blank: true %></td>
+                    <td><%= shop_day_form.check_box :closed %></td>
+                    <td><%= shop_day_form.text_field :hours %></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+
+    <div>
+        <% @shop.errors.full_messages.each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+        <%= shop_form.submit %>
+    </div>
+<% end %>
+

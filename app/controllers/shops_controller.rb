@@ -48,6 +48,6 @@ class ShopsController < ApplicationController
     private
 
     def shop_params
-        params.require(:shop).permit(:name, shop_days_attributes: [:day_id, :closed, :hours])
+        params.require(:shop).permit(:name, shop_days_attributes: [:id, :day_id, :closed, :hours])
     end
 end
