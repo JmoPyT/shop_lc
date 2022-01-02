@@ -1,1 +1,17 @@
-<h2><%= @shop.id %> - Shop <%= @shop.name %></h2>
+<h2>Shop <%= @shop.name %> (id: <%= @shop.id %>)</h2>
+
+<h3>Opening hours</h3>
+<% if @shops_day.empty? %>
+    Aucun horaire
+<% else %>
+    <% @shops_day.each do |shop_day| %>
+        <div>
+            <%= shop_day.day.label %>
+            <% if shop_day.closed %>
+                Fermé
+            <% else %>
+                <%= shop_day.hours %>
+            <% end %>
+        </div>
+    <% end %>
+<% end %>

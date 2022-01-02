@@ -1,13 +1,30 @@
-<%= form_with model: shop do |form| %>
+<%= form_with model: shop do |shop_form| %>
     <div>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
+        <%= shop_form.label :name %>
+        <%= shop_form.text_field :name %>
         <% shop.errors.full_messages_for(:name).each do |message| %>
             <div><%= message %></div>
         <% end %>
     </div>
+    <div>
+        <h3>Hours</h3>
+        <%= shop_form.fields_for :shop_days do |shop_day_form| %>
+            <div>
+                <%= shop_day_form.label :day %>
+                <%= shop_day_form.collection_select :day_id, Day.all, :id, :label %>
+            </div>
+            <div>
+                <%= shop_day_form.label :closed %>
+                <%= shop_day_form.check_box :closed %>
+            </div>
+            <div>
+                <%= shop_day_form.label :hours %>
+                <%= shop_day_form.text_field :hours %>
+            </div>
+        <% end %>
+    </div>
 
     <div>
-        <%= form.submit %>
+        <%= shop_form.submit %>
     </div>
 <% end %>

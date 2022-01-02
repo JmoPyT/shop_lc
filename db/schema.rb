@@ -10,18 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_02_145712) do
+ActiveRecord::Schema.define(version: 2022_01_02_152314) do
 
-  create_table "days", force: :cascade do |t|
-    t.string "label"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    create_table "days", force: :cascade do |t|
+        t.string "label"
+        t.datetime "created_at", precision: 6, null: false
+        t.datetime "updated_at", precision: 6, null: false
+    end
+
+    create_table "shop_days", force: :cascade do |t|
+        t.string "hours"
+        t.boolean "closed"
+        t.integer "shop_id", null: false
+        t.integer "day_id", null: false
+        t.datetime "created_at", precision: 6, null: false
+        t.datetime "updated_at", precision: 6, null: false
+        t.index ["day_id"], name: "index_shop_days_on_day_id"
+        t.index ["shop_id"], name: "index_shop_days_on_shop_id"
+    end
+
+    create_table "shops", force: :cascade do |t|
+        t.string "name"
+        t.datetime "created_at", precision: 6, null: false
+        t.datetime "updated_at", precision: 6, null: false
+    end
+
+    add_foreign_key "shop_days", "days"
+    add_foreign_key "shop_days", "shops"
   end
-
-  create_table "shops", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-end

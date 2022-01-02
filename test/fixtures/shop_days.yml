@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hours: MyString
+  closed: false
+  shop: one
+  day: one
+
+two:
+  hours: MyString
+  closed: false
+  shop: two
+  day: two
